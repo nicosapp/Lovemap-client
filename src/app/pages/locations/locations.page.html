@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-searchbar
+      animated
+      *ngIf="searchBar; else titleBar"
+      placeholder="Find your location"
+      showCancelButton="focus"
+      (ionCancel)="searchBar = false"
+    ></ion-searchbar>
+    <ng-template #titleBar>
+      <ion-title>Locations</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="searchBar = true">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="py-0">
+    <app-location-list-item
+      *ngFor="let location of apiLocations.locations$ | async"
+      [class.selected]="location === selectedLocation"
+      [location]="location"
+    >
+    </app-location-list-item>
+  </ion-list>
+</ion-content>

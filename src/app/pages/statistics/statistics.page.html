@@ -1,0 +1,40 @@
+<ion-menu side="start" type="overlay" contentId="main">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="menuClose()">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="location" slot="start"></ion-icon>
+        Menu Item
+      </ion-item>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<div id="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Statistics</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+  </ion-content>
+</div>

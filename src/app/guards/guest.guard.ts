@@ -1,0 +1,39 @@
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  Router
+} from '@angular/router';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AuthService } from '@app/services/http/auth.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GuestGuard implements CanActivate {
+  constructor(private router: Router, private auth: AuthService) {}
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return from(this.auth.fetchUser()).pipe(
+      map((auth) => {
+        const loggedIn = AuthService.loggedIn;
+
+        if (loggedIn) {
+          this.router.navigate(['/tabs']);
+        }
+
+        return !loggedIn;
+      })
+    );
+  }
+}

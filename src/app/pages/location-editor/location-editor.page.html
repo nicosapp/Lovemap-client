@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title> Location Editor </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="padding">
+  <form [formGroup]="locationForm" (ngSubmit)="save()">
+    <div
+      *ngIf="address.country || address.locality"
+      class="mb-4 d-flex flex-align-center flex-justify-space-evenly"
+    >
+      <ion-icon name="location" size="large" color="medium"></ion-icon>
+      <div>{{ address.country}}</div>
+      <div>{{ address.locality}}</div>
+    </div>
+
+    <div
+      *ngIf="latLng"
+      class="mb-4 d-flex flex-align-center flex-justify-space-evenly"
+    >
+      <div><strong>lat: </strong>{{ latLng.lat}}</div>
+      <div><strong>lng: </strong>{{ latLng.lng}}</div>
+    </div>
+
+    <app-text-field
+      name="title"
+      label="Title"
+      type="text"
+      required
+      [hideDetails]="true"
+      [clearable]="true"
+      formControlName="title"
+    >
+    </app-text-field>
+
+    <app-rating
+      class="full-width text-center mb-4"
+      formControlName="rating"
+    ></app-rating>
+
+    <app-text-field
+      name="with"
+      label="Partner(s)"
+      type="text"
+      [clearable]="true"
+      [hideDetails]="true"
+      formControlName="with"
+    >
+    </app-text-field>
+
+    <app-text-field
+      name="context"
+      label="Context"
+      type="text"
+      [clearable]="true"
+      [hideDetails]="true"
+      formControlName="context"
+    >
+    </app-text-field>
+
+    <app-text-field
+      name="comment"
+      label="Comment"
+      [textarea]="true"
+      [clearable]="true"
+      [hideDetails]="true"
+      formControlName="comment"
+    >
+    </app-text-field>
+
+    <ion-grid class="pa-0 mb-4">
+      <ion-row class="pa-0">
+        <ion-col size="6" class="pl-0 py-0 pr-2">
+          <ion-item class="ion-filled">
+            <ion-label position="floating">Date</ion-label>
+            <ion-datetime
+              displayFormat="MMM DD YY"
+              placeholder="Select Date"
+              formControlName="date"
+            ></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6" class="pr-0 py-0 pl-2">
+          <ion-item class="ion-filled">
+            <ion-label position="floating">Time</ion-label>
+            <ion-datetime
+              displayFormat="HH:mm"
+              placeholder="Start Time"
+              formControlName="time"
+            ></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <app-text-field
+      name="duration"
+      label="Duration"
+      type="number"
+      suffix="min"
+      [hideDetails]="true"
+      formControlName="duration"
+    >
+    </app-text-field>
+
+    <ion-button
+      expand="block"
+      fill="outline"
+      size="medium"
+      color="medium"
+      class="btn-upload mb-4"
+      (click)="uploadImage()"
+    >
+      <ion-icon name="cloud-upload" class="mr-4"></ion-icon>
+      Upload image
+    </ion-button>
+
+    <div>
+      <ion-button
+        size="large"
+        [disabled]="disabled"
+        color="primary"
+        expand="block"
+        type="submit"
+        class="ion-text-capitalize"
+      >
+        <ng-template [ngIf]="!loading"> Save </ng-template>
+        <ng-template [ngIf]="loading">
+          <ion-spinner name="crescent"></ion-spinner>
+        </ng-template>
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

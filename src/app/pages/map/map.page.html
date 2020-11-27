@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title> Map </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="map_canvas" #map_canvas></div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button size="small" color="light" (click)="modalLocation()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button size="small" color="light" (click)="mapOptions()">
+      <ion-icon name="layers-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

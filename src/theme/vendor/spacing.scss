@@ -1,0 +1,83 @@
+$direction: (
+  'a': '',
+  'l': '-left',
+  't': '-top',
+  'r': '-right',
+  'b': '-bottom',
+  'x': '',
+  'y': ''
+);
+
+@for $i from 0 through 20 {
+  @each $letter, $dir in $direction {
+    .m#{$letter}-#{$i} {
+      @if $letter == 'x' {
+        margin: 0 2px * $i;
+      } @else if $letter == 'y' {
+        margin: 2px * $i 0;
+      } @else {
+        margin#{$dir}: 2px * $i;
+      }
+    }
+  }
+}
+
+@for $i from 0 through 10 {
+  @each $letter, $dir in $direction {
+    .p#{$letter}-#{$i} {
+      @if $letter == 'x' {
+        padding: 0 2px * $i;
+      } @else if $letter == 'y' {
+        padding: 2px * $i 0;
+      } @else {
+        padding#{$dir}: 2px * $i;
+      }
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+//text
+$text-align: (
+  'center': 'center',
+  'left': 'left',
+  'right': 'right'
+);
+@each $class, $position in $text-align {
+  .text-#{$class} {
+    text-align: #{$position};
+  }
+}
+
+//flex
+.d-flex {
+  display: flex;
+}
+$flex-justify: (
+  'center': 'center',
+  'start': 'flex-start',
+  'end': 'flex-end',
+  'space-around': 'space-around',
+  'space-between': 'space-between',
+  'space-evenly': 'space-evenly'
+);
+@each $class, $position in $flex-justify {
+  .flex-justify-#{$class} {
+    justify-content: #{$position};
+  }
+}
+$flex-align: (
+  'center': 'center',
+  'start': 'flex-start',
+  'end': 'flex-end',
+  'baseline': 'baseline',
+  'stretch': 'stretch'
+);
+@each $class, $position in $flex-align {
+  .flex-align-#{$class} {
+    align-items: #{$position};
+  }
+}

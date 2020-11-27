@@ -1,0 +1,17 @@
+ion-content {
+  --padding-top: 0 !important;
+  --padding-bottom: 0 !important;
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+}
+ion-searchbar {
+  $text-color: var(--ion-color-primary-contrast);
+
+  --box-shadow: none;
+  --border-radius: 0.5rem;
+  --color: $text-color;
+  --clear-button-color: $text-color;
+  --cancel-button-color: $text-color;
+  --icon-color: $text-color;
+  --background: var(--ion-color-primary-shade);
+}

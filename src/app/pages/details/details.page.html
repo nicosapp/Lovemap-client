@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ model | titlecase }} details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <app-location-details
+    *ngIf="model=='location'"
+    [location]="(location$ | async)"
+  ></app-location-details>
+</ion-content>

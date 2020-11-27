@@ -9,18 +9,47 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+@import './theme/variables.scss';
+
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+@import './theme/vendor/material.scss';
+@import './theme/vendor/spacing.scss';
+
+/* stylelint-disable selector-type-no-unknown, custom-property-empty-line-before */
+
+ion-content.padding {
+  --padding-top: 8px !important;
+  --padding-start: 8px !important;
+  --padding-bottom: 8px !important;
+  --padding-end: 8px !important;
+}
+
+ion-item.ion-filled {
+  border-radius: 0.5rem !important;
+  --background: var(--ion-color-grey-step-950);
+  --border-width: 0;
+}
+ion-button {
+  --border-width: 1px;
+}
+// @media (prefers-color-scheme: light) {
+//   .md,
+//   .ios {
+//     --ion-text-color: #7d7d7d;
+//   }
+// }

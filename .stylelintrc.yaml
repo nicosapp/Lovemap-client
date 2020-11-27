@@ -1,0 +1,12 @@
+extends:
+  - stylelint-config-standard
+  - stylelint-config-prettier
+rules:
+  # Follow best practices
+  # font-family-name-quotes: always-where-recommended
+  at-rule-no-unknown: null
+  selector-type-no-unknown:
+    - true
+    - ignore:
+        - custom-elements
+        - default-namespace
