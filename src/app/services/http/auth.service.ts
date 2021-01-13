@@ -20,7 +20,7 @@ export class AuthService {
 
   async signIn({ email, password }: Credentials) {
     try {
-      await this.getCookie();
+      // await this.getCookie();
       await this.loginWith({ email, password });
       await this.fetchUser();
       this.router.navigate([env.auth.redirect.login]);
@@ -30,6 +30,7 @@ export class AuthService {
   }
 
   private async loginWith(credentials: Credentials): Promise<any> {
+    credentials = { ...credentials, ...{ device_name: 'android' } };
     return this.http
       .post(`${env.baseDomain}login`, credentials)
       .toPromise()

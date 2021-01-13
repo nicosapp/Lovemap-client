@@ -45,12 +45,12 @@
     ></app-rating>
 
     <app-text-field
-      name="with"
+      name="partner"
       label="Partner(s)"
       type="text"
       [clearable]="true"
       [hideDetails]="true"
-      formControlName="with"
+      formControlName="partner"
     >
     </app-text-field>
 
@@ -124,7 +124,7 @@
     <div>
       <ion-button
         size="large"
-        [disabled]="disabled"
+        [disabled]="locationForm.invalid"
         color="primary"
         expand="block"
         type="submit"

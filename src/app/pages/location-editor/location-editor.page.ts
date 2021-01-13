@@ -29,7 +29,7 @@ export class LocationEditorPage implements OnInit {
   private locationForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     comment: new FormControl(''),
-    with: new FormControl(),
+    partner: new FormControl(),
     context: new FormControl(),
     date: new FormControl(),
     time: new FormControl(),
@@ -56,7 +56,12 @@ export class LocationEditorPage implements OnInit {
       ...{ country: this.address.country, city: this.address.locality },
       ...{ lat: this.latLng.lat, lng: this.latLng.lng }
     };
-    this.apiLocation.store(location);
+    console.log(location);
+    this.loading = true;
+    this.apiLocation.store(location).subscribe(() => {
+      this.loading = false;
+      this.modalCtrl.dismiss({ success: true });
+    });
     // console.log(location);
   }
   close() {

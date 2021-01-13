@@ -21,7 +21,7 @@
 <ion-content>
   <ion-list class="py-0">
     <app-location-list-item
-      *ngFor="let location of apiLocations.locations$ | async"
+      *ngFor="let location of locations"
       [class.selected]="location === selectedLocation"
       [location]="location"
     >

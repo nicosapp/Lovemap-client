@@ -20,8 +20,7 @@ export class HttpHeaderInterceptorService implements HttpInterceptor {
     req = req.clone({
       headers: req.headers
         .set('Accept', 'application/json')
-        .set('Content-Type', 'applicaiton/json'),
-      withCredentials: true
+        .set('Content-Type', 'application/json')
     });
 
     return next.handle(req);

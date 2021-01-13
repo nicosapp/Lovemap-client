@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { MapService } from '@app/services/store/map.service';
 import { AlertService } from '@app/services/helpers/alert.service';
 import { Location } from '@app/interfaces/location';
 import { ApiLocationsService } from '@app/services/store/api-locations.service';
@@ -35,7 +37,10 @@ export class LocationListItemComponent implements OnInit {
   @Input() location: Location;
   constructor(
     private apiLocation: ApiLocationsService,
-    private alert: AlertService
+    private mapService: MapService,
+    private alert: AlertService,
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {}
@@ -50,5 +55,17 @@ export class LocationListItemComponent implements OnInit {
     });
   }
 
-  private viewOnMap(): void {}
+  private viewOnMap(): void {
+    if (this.mapService.mapReady) {
+      this.mapService.setTarget({
+        lat: this.location.lat,
+        lng: this.location.lng
+      });
+      this.router.navigateByUrl('/tabs/map');
+    } else {
+      this.alertService.popup({
+        message: 'Please navigate to map tab before selecting a location'
+      });
+    }
+  }
 }

@@ -7,13 +7,18 @@ import { AlertController } from '@ionic/angular';
 export class AlertService {
   constructor(public alertController: AlertController) {}
 
-  async presentAlert() {
+  async popup(p) {
+    p.title = p.title || null;
+    p.subheader = p.subheader || null;
+    p.message = p.message || null;
+    p.buttonText = p.buttonText || 'Ok';
+
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK']
+      cssClass: 'my-alert',
+      header: p.title,
+      subHeader: p.subheader,
+      message: p.message,
+      buttons: [p.buttonText]
     });
 
     await alert.present();
@@ -21,7 +26,7 @@ export class AlertService {
 
   async presentAlertMultipleButtons() {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
+      cssClass: 'my-alert',
       header: 'Alert',
       subHeader: 'Subtitle',
       message: 'This is an alert message.',

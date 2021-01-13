@@ -2,10 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const baseUrl = '//192.168.0.20:8000';
+
 export const environment = {
   production: false,
+
   baseDomain: '//localhost:8000/',
-  baseApiUrl: '//localhost:8000/api',
+  baseApiUrl: `${baseUrl}/api`,
   auth: {
     redirect: {
       login: '/tabs',
@@ -14,7 +17,8 @@ export const environment = {
     }
   },
   GOOGLE_MAPS_API: 'AIzaSyCVi55kxDIsbz303Vaic_TAyGGCbEoDlJ4',
-  GEOCODER_API: false
+  GOOGLE_MAPS_API_ACTIVE: true,
+  GEOCODER_API_ACTIVE: false
 };
 
 /*
